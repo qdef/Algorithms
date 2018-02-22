@@ -1,16 +1,10 @@
-#*******
-#* Read input from STDIN
-#* Use echo or print to output your result, use the /n constant at the end of each result line.
-#* Use:
-#*      local_print (variable ); 
-#* to display simple variables in a dedicated area.
-#* ***/
+"""NOTE:
+The generated inputs of this BattleDev exercise sometimes lead to several possible solutions for chromosome assembly.
+If several solutions are possible for one set of DNA fragments, the given output might differ from the expected answer.
+This leads to situations where submitting your code will raise an error, and resubmitting the exact same code a second time may pass the test.
+"""
 import sys
 import itertools
-
-"""for line in sys.stdin:
-	lines.append(line.rstrip('\n'))"""
-	
 lines = ['7', 'T', 'GTAGA', 'CGCA', 'GAC', 'GCGT', 'CTGC', 'ATC']
 
 # The DNA rule:
@@ -27,7 +21,7 @@ def complementary(x):
 N = int(lines[0])
 fragments = lines[1:]
 
-#What is the total length of the chromosome?
+# Defining the total length of the chromosome:
 total_bp = 0
 for i in fragments:
 	for j in i:
@@ -43,7 +37,7 @@ for i in range(0, N+1):
 		if len(packed_dna)==chromosome_length:
 			fragment_combinations.append(dna)
 
-# Selecting fragments that have a reverse complement :
+# Selecting fragments that have a reverse complement without duplicates:
 comp_fragments = []
 for dna1 in fragment_combinations:
 	dna_list1=dna1.split()
